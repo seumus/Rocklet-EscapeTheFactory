@@ -30,6 +30,7 @@ public class Movement : MonoBehaviour
             ApplyRotation(1);
         }else if (Input.GetKey(KeyCode.D)) {
 			ApplyRotation(-1);
+			Debug.Log("Hello?");
 		}
 	}
 
