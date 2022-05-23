@@ -9,6 +9,8 @@ public class Movement : MonoBehaviour
 	[SerializeField] public float thrustSpeed = 1000f;
 	[SerializeField] public float rotateSpeed = 50f;
 	[SerializeField] AudioClip mainEngine;
+	[SerializeField] ParticleSystem mainThrusterParticles;
+	[SerializeField] ParticleSystem sideThrusterParticles;
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
@@ -26,9 +28,11 @@ public class Movement : MonoBehaviour
 			rb.AddRelativeForce(Vector3.up * thrustSpeed * Time.deltaTime);
 			if(!audioSource.isPlaying) {
 				audioSource.PlayOneShot(mainEngine);
+				mainThrusterParticles.Play();
 			}
 		}else {
 			audioSource.Stop();
+			mainThrusterParticles.Stop();
 		}
 
 	}
